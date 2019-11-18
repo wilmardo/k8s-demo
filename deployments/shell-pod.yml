@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shell
+spec:
+  containers:
+  - image: intermaxcloudsourcing/curl:latest
+    args:
+    - sleep
+    - "1000000"
+    name: shell
