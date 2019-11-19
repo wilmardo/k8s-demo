@@ -85,15 +85,18 @@ Now from within the shell pod you can access the service Cluster IP and you will
 ### Ingress
 
 Now that we have our hello-world pod replicated and behind a static Cluster IP it is ready for access from the outside world. 
-This is done by creating a Ingress object which gets picked up by the Ingress controller within the cluster, Traefik in our case. As soon as Traefik discovers a new Ingress it exposes the service on the given URl with a default certificate. Then it will try to request a Let's Encrypt certificate for the domain.
+This is done by creating a Ingress object which gets picked up by the Ingress controller within the cluster, Traefik in our case. As soon as Traefik discovers a new Ingress it exposes the service on the given URl with a default certificate.
 
-The ingress deployment file is located under deployments/ and has some parameters missing and (should be of no surprise haha) the Kubernetes documents are  a good start:
+The ingress deployment file is located under deployments/ and has some parameters missing and (should be of no surprise haha) the Kubernetes documents are a good start:
 
 https://kubernetes.io/docs/concepts/services-networking/ingress/
 
-You have the k8s-demo.intermax.io domain to chose a subdomain for. Be creative since these Ingress objects are clusterwide and must be unique :)
+You have the k8s-demo.intermax.io domain to chose a subdomain for, example: yolo.k8s-demo.intermax.io.
+Be creative since these Ingress objects are clusterwide and must be unique :)
 
-When the Ingress object is deployed successfully you can access the hello world pod by pointing your browser to the created url.
+When the Ingress object is deployed successfully you can access the hello world pod by pointing your browser to the created url but add port 30443 (since kube-api is listening on 443):
+
+https://yolo.k8s-demo.intermax.io:30443
 
 ### Choas Engineering
 
@@ -108,7 +111,6 @@ While refreshing the webpage go ahead and delete one of the pods by podname:
 `kubectl delete pods -n <namespace> <podname>`
 
 Now the Server Name does not change anymore since all the requests are loadbalanced to the same pod. As soon as the second pod is up again the Server Name will alternate between the two pods again.
-
 
 ## References
 
