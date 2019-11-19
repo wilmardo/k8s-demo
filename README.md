@@ -42,8 +42,8 @@ spec:
 
 ## Exercises
 
-* Kubernetes - see [k8s/excercises.md](k8s/excercises.md)
-* Docker - see [docker/excercises.md](docker/excercises.md)
+* Kubernetes - see [k8s/exercises.md](k8s/exercises.md)
+* Docker - see [docker/exercises.md](docker/exercises.md)
 
 ---
 

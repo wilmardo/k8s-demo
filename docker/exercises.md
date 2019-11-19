@@ -1,4 +1,4 @@
-# Docker Excercises
+# Docker Exercises
 
 These exercises are a bit sparse and will be expanded in the future :)
 
