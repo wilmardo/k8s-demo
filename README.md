@@ -42,7 +42,8 @@ spec:
 
 ## Exercises
 
-See [exercises.md](exercises.md) in the root of this repository.
+* Kubernetes - see [k8s/excercises.md](k8s/excercises.md)
+* Docker - see [docker/excercises.md](docker/excercises.md)
 
 ---
 
@@ -52,7 +53,8 @@ See [exercises.md](exercises.md) in the root of this repository.
 
 * `kubectl describe` - describe an object, it is like get but more descriptive (logging excerpt etc)
 * `kubectl get` - get an object from the api
-* `kubectl apply` - apply resources to the cluster
+* `kubectl apply` - apply objects to the cluster
+* `kubectl delete` - delete an object
 * `kubectl exec` - execture a command to a running container
 
 ### Usefull examples
@@ -64,12 +66,31 @@ See [exercises.md](exercises.md) in the root of this repository.
 * `kubectl get -n kube-system pods` - get all pods within a namespace
 * `kubectl get -n kube-system pod etcd-node01 -o yaml` - get yaml specification of an existing pod
 
-* `kubectl apply -f deployment.yml` - apply a yaml file to the cluster
+* `kubectl apply -f deployment.yml` - apply an object specified in an yaml file to the cluster
 * `kubectl apply -R -f deployments/` - recursively apply a directory of yaml files
 
-### References
+* `kubectl delete -f deployment.yml` - delete an object specified in an yaml file from the cluster 
+* `kubectl delete -n kube-system pod etcd-node01` - delete the etcd-node01 pod
+* `kubectl delete -n kube-system pod -l app.kubernetes.io/name=hello-world` - delete all the pods with the app.kubernetes.io/name: hello-world label
 
-* [Understanding Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
-* [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
-* [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
+* `kubectl exec -it -n kube-system etcd-node01 -- /bin/bash` - run a shell in the etcd-node01 pod
+
+## Docker common command reference
+
+### Overview
+
+* `docker build` - build a Docker image
+* `docker tag` - tag a Docker image
+* `docker run` - run a Docker container
+
+### Usefull examples
+
+* `docker build -t intermaxcloudsourcing/hello-world:latest .` - build the Dockerfile in the current directory and tag the image with intermaxcloudsourcing/hello-world:latest
+* `docker build -t intermaxcloudsourcing/hello-world:latest --no-cache .` - 
+
+* `docker tag intermaxcloudsourcing/hello-world:latest intermaxcloudsourcing/hello-world:1.0.0` - tag image intermaxcloudsourcing/hello-world:latest to intermaxcloudsourcing/hello-world:1.0.0
+
+* `docker run -it intermaxcloudsourcing/hello-world:latest` - run the intermaxcloudsourcing/hello-world:latest image with an interactive terminal
+* `docker run -it -p 5000:5000 intermaxcloudsourcing/hello-world:latest` - run the intermaxcloudsourcing/hello-world:latest image with the current directory (pwd) mounted to /data in the container
+* `docker run -it -v ./app:/data intermaxcloudsourcing/hello-world:latest` - run the intermaxcloudsourcing/hello-world:latest image with the data directory mounted to /data in the container
+* `docker run -it -v $(pwd):/data intermaxcloudsourcing/hello-world:latest` - run the intermaxcloudsourcing/hello-world:latest image with the current directory (pwd) mounted to /data in the container

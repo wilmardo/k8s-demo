@@ -9,6 +9,11 @@ See the [setup-local-cluster.md](setup-local-cluster.md) for the instructions ho
 
 ## 1. Practice with K8S
 
+### Prerequisite
+
+First and foremost, setup the kubectl cli on your shell, instructions can be found here:
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
 ### Your first deployment
 
 In the deployments folder are several files present, each name corresponding with the k8s api object. We start with the deployment.yml, a definition for a simple hello pod. It serves a simple Nginx page which should look like something this:
@@ -90,7 +95,6 @@ You have the k8s-demo.intermax.io domain to chose a subdomain for. Be creative s
 
 When the Ingress object is deployed successfully you can access the hello world pod by pointing your browser to the created url.
 
-
 ### Choas Engineering
 
 For more insight into Choas Engineering see the [this cool article](https://www.gremlin.com/community/tutorials/chaos-engineering-the-history-principles-and-practice/).
@@ -104,3 +108,11 @@ While refreshing the webpage go ahead and delete one of the pods by podname:
 `kubectl delete pods -n <namespace> <podname>`
 
 Now the Server Name does not change anymore since all the requests are loadbalanced to the same pod. As soon as the second pod is up again the Server Name will alternate between the two pods again.
+
+
+## References
+
+* [Understanding Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+* [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
+* [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+* [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
