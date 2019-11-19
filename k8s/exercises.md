@@ -76,7 +76,7 @@ https://kubernetes.io/docs/concepts/services-networking/service/
 
 As soon as the service is deployed you can see the Endpoint pointing to the pod ips and the service has a Cluster IP assigned. A Cluster IP is a static IP where the scaled pods are accessible on,
 
-`kubectl get -n <namespace> enpoints`
+`kubectl get -n <namespace> endpoints`
 
 `kubectl get -n <namespace> service`
 
