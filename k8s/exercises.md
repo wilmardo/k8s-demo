@@ -118,3 +118,4 @@ Now the Server Name does not change anymore since all the requests are loadbalan
 * [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 * [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 * [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
+* [Kubernetes Components Map](https://kubemap.dev/map/)
